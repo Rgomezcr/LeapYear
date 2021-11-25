@@ -37,5 +37,14 @@ namespace LeapYear.Test
             bool result = LeapYearCalculator.IsLeapYear(100);
             Assert.False(result);
         }
+        
+        [Fact]
+        public void BeDivisibleFourByFourAndNotBeDivisibleByOneHundred()
+        {
+            bool result = LeapYearCalculator.IsLeapYear(4);
+            Assert.True(result);
+        }
+
+        
     }
 }
