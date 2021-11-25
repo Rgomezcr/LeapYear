@@ -4,44 +4,39 @@ namespace LeapYear.Test
 {
     public class LeapYearShould
     {
-        [Fact]
-        public void BeDivisibleTwoThousandByFourHundred()
+        [Theory]
+        [InlineData(2000)]
+        [InlineData(400)]
+        public void BeDivisibleByFourHundred(int year)
         {
-            bool result = LeapYearCalculator.IsLeapYear(2000);
+            bool result = LeapYearCalculator.IsLeapYear(year);
             Assert.True(result);
         }
         
-        [Fact]
-        public void BeDivisibleFourHundredByFourHundred()
+        [Theory]
+        [InlineData(1000)]
+        [InlineData(700)]
+        public void NotBeDivisibleByFourHundred(int year)
         {
-            bool result = LeapYearCalculator.IsLeapYear(400);
-            Assert.True(result);
-        }
-        [Fact]
-        public void NotBeDivisibleOneThousandByFourHundred()
-        {
-            bool result = LeapYearCalculator.IsLeapYear(1000);
+            bool result = LeapYearCalculator.IsLeapYear(year);
             Assert.False(result);
         }
         
-        [Fact]
-        public void NotBeDivisibleOneHundredByFourHundredAndBeDivisibleByOneHundred()
+        [Theory]
+        [InlineData(100)]
+        [InlineData(200)]
+        public void NotBeDivisibleByFourHundredAndBeDivisibleByOneHundred(int year)
         {
-            bool result = LeapYearCalculator.IsLeapYear(100);
+            bool result = LeapYearCalculator.IsLeapYear(year);
             Assert.False(result);
         }
         
-        [Fact]
-        public void NotBeDivisibleTwoHundredByFourHundredAndBeDivisibleByOneHundred()
+        [Theory]
+        [InlineData(16)]
+        [InlineData(2440)]
+        public void BeDivisibleByFourAndNotBeDivisibleByOneHundred(int year)
         {
-            bool result = LeapYearCalculator.IsLeapYear(100);
-            Assert.False(result);
-        }
-        
-        [Fact]
-        public void BeDivisibleFourByFourAndNotBeDivisibleByOneHundred()
-        {
-            bool result = LeapYearCalculator.IsLeapYear(4);
+            bool result = LeapYearCalculator.IsLeapYear(year);
             Assert.True(result);
         }
 
